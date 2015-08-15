@@ -1,0 +1,12 @@
+{
+  "name": "ng-luminiz-tooling",
+  "version": "0.0.0",
+  "authors": [
+    "Chris Lee <chris.leeshanok@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.4",
+    "bootstrap": "~3.3.5"
+  }
+}
