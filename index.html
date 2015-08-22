@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="public/css/style.css"/>
     </head>
-    <body>
+    <body ng-app="LuminizTooling">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -24,10 +24,43 @@
                 </div><!-- /.navbar-collapse -->
             </div>
         </nav>
-        <div class="container-fluid">
+        <div class="container-fluid" ng-controller="productController as products">
             <div class="row">
                 <div class="col-md-12">
-                    Test
+                    <table st-table="products.productList" st-safe-src="products.productList" class="table table-striped table-hover">
+                        <tr>
+                            <th colspan="6">
+                                <input st-search placeholder="Search" class="input-sm form-control" type="search"/>
+                            </th>
+                        </tr>                        
+                        <tr>
+                            <th st-sort="name">Name</th>
+                            <th st-sort="sku">SKU</th>
+                            <th st-sort="category_names">Categories</th>
+                            <th>Assets</th>
+                            <th st-sort="hidden">Hidden</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tbody>
+
+                            <tr ng-repeat="product in products.productList">
+                                <td>{{product.name}}</td>
+                                <td>{{product.sku}}</td>
+                                <td>{{product.category_names || 'None'}}</td>
+                                <td>{{product.num_assets}}</td>
+                                <td>{{if(product.hidden) ? 'Yes' : 'No'}}</td>
+                                <td>
+                                    <button class="btn btn-defaul"><i class="glyphicon glyphicon-eye-close" title="edit"></i></button>
+                                    <button class="btn btn-primary">
+                                        <i class="glyphicon glyphicon-edit" title="edit"></i>
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        <i class="glyphicon glyphicon-trash" title="delete"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -35,7 +68,11 @@
 
         <!-- Scripts -->
         <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="public/js/app.js"></script>
+        <script src="public/js/controllers.js"></script>
+        <script src="public/js/services.js"></script>
     </body>
 </html>
